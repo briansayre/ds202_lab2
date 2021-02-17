@@ -38,11 +38,14 @@ barplot(t)
 correlation <- cor(choco$Cocoa_Percent, choco$Rating)
 correlation
 
+#For this we took the average rating and grouped it by the cocoa_percent
+#Without modifying the data how we did the plot would give useless data of dots in lines.
 agg1 = aggregate(choco$Rating, by=list(choco$Cocoa_Percent), FUN=mean)
 agg1
 
 plot(agg1)
 
+#For this we did the same as above but in reverse
 agg2 = aggregate(choco$Cocoa_Percent, by=list(choco$Rating), FUN=mean)
 agg2
 
