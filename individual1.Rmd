@@ -1,0 +1,50 @@
+---
+title: "Lab02"
+author: "Brian Sayre"
+date: "2/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Get the data.
+
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+str(choco) 
+```
+
+
+1.  
+```{r}
+hist(choco$Rating)
+```
+
+```{r}
+boxplot(choco$Rating)
+```
+  
+2.  
+```{r}
+library(ggplot2)
+t <- table(choco$Location)
+barplot(t)
+```
+  
+3.  
+```{r}
+plot(choco$Rating, choco$Cocoa_Percent)
+```
+
+```{r}
+cor(choco$Cocoa_Percent, choco$Rating)
+```
+
+```{r}
+agg <- aggregate(choco$Rating, by=list(choco$Cocoa_Percent), FUN=mean)
+plot(agg)
+```
+
