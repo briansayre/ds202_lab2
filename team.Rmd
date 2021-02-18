@@ -1,3 +1,10 @@
+---
+title: "Lab02"
+author: "Brian Sayre, Justin Park, and Desmond Orton"
+date: "2/17/2021"
+output: html_document
+---
+
 <h1>Question 1</h1>
 ```{r}
 choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
@@ -50,7 +57,52 @@ plot(origins$x, xlab = "Countries", ylab = "Average Ratings")
 ```{r}
 #Cocoa Percent by Company
 agg3 = aggregate(choco$Cocoa_Percent, by=list(choco$Company), FUN=length)
-agg3
+head(agg3, 10)
 
 pie(unique(choco$Cocoa_Percent))
 ```
+
+### Characteristics
+
+In this section we took a look at how characteristic 1 of the chocolate affected the rating of the chocolate. Then, we looked at where the beans' origin was with those most common characteristics. 
+```{r}
+t <- table(choco$Characteristics1)
+charDF <- as.data.frame(t) 
+tail(charDF, 3)
+data <- charDF[order(charDF$Freq),]
+tail(data, 3)
+```
+This is showing us the most common characteristics for the chocolates. Next, we look at just the ratings with those ratings.
+
+```{r}
+creamy <- choco[choco$Characteristics1 == "creamy",]
+creamyMean <- mean(creamy$Rating)
+print(creamyMean)
+loc <- table(creamy$Bean_Origin)
+locDF <- as.data.frame(loc) 
+data <- locDF[order(locDF$Freq),]
+tail(data, 3)
+```
+Here is the average rating for chocolates, 3.484568, with the creamy characteristic, which is a higher mean than most other characteristics. Also, we can see that most beans with the creamy characteristic come from Venezuela. 
+
+```{r}
+sandy <- choco[choco$Characteristics1 == "sandy",]
+sandyMean <- mean(sandy$Rating)
+print(sandyMean)
+loc <- table(sandy$Bean_Origin)
+locDF <- as.data.frame(loc) 
+data <- locDF[order(locDF$Freq),]
+tail(data, 3)
+```
+Here is the average rating for chocolates, 3.091418, with the sandy characteristic. Also, we can see that most beans with the sandy characteristic come from Peru. 
+
+```{r}
+intense <- choco[choco$Characteristics1 == "intense",]
+intenseMean <- mean(intense$Rating)
+print(intenseMean)
+loc <- table(intense$Bean_Origin)
+locDF <- as.data.frame(loc) 
+data <- locDF[order(locDF$Freq),]
+tail(data, 3)
+```
+Here is the average rating for chocolates, 3.207317, with the sandy characteristic. Also, we can see that most beans with the intense characteristic come from Venezuela. 

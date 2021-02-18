@@ -48,3 +48,41 @@ agg <- aggregate(choco$Rating, by=list(choco$Cocoa_Percent), FUN=mean)
 plot(agg)
 ```
 
+5.
+
+```{r}
+
+
+t <- table(choco$Characteristics1)
+charDF <- as.data.frame(t) 
+charDF
+data <- charDF[order(charDF$Freq),]
+data
+
+creamy <- choco[choco$Characteristics1 == "creamy",]
+creamyMean <- mean(creamy$Rating)
+print(creamyMean)
+loc <- table(creamy$Bean_Origin)
+locDF <- as.data.frame(loc) 
+data <- locDF[order(locDF$Freq),]
+tail(data, 3)
+
+sandy <- choco[choco$Characteristics1 == "sandy",]
+sandyMean <- mean(sandy$Rating)
+print(sandyMean)
+loc <- table(sandy$Bean_Origin)
+locDF <- as.data.frame(loc) 
+data <- locDF[order(locDF$Freq),]
+tail(data, 3)
+ 
+intense <- choco[choco$Characteristics1 == "intense",]
+intenseMean <- mean(intense$Rating)
+print(intenseMean)
+loc <- table(intense$Bean_Origin)
+locDF <- as.data.frame(loc) 
+data <- locDF[order(locDF$Freq),]
+data
+tail(data, 3)
+
+
+```
