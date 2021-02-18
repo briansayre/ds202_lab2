@@ -42,6 +42,9 @@ plot(agg2)
 ``` 
 
 <h1>Question 4</h1>
+#Average Ratings by Origin Country
+origins <- aggregate(choco$Rating, by=list(choco$Bean_Origin), FUN=mean)
+plot(origins$x, xlab = "Countries", ylab = "Average Ratings")
 
 <h1>Question 5</h1>
 ```{r}
